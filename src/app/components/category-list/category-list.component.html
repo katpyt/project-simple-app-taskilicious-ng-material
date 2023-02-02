@@ -1,10 +1,12 @@
 <ng-container *ngIf="categoryList$ | async as categoryList; else loader;">
-    <h1>Choose a category</h1>
-    <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let category of categoryList;">
-            {{category.name}}
-        </mat-list-item>
-    </mat-list>
+    <ng-container *ngIf="categoryList.length > 0; else empty">
+        <h1>Choose a category</h1>
+        <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let category of categoryList;">
+                {{category.name}}
+            </mat-list-item>
+        </mat-list>
+    </ng-container>
 </ng-container>
 
 <ng-template #loader>
@@ -13,4 +15,8 @@
         [mode]="'indeterminate'"
         [value]="50">
       </mat-progress-spinner>
+</ng-template>
+
+<ng-template #empty>
+    There is no data.
 </ng-template>
