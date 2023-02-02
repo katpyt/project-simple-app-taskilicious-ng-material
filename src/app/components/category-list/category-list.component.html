@@ -1,6 +1,7 @@
+<h1>Welcome to Taskillicious</h1>
 <ng-container *ngIf="categoryList$ | async as categoryList; else loader;">
+    <h2>Choose a category</h2>
     <ng-container *ngIf="categoryList.length > 0; else empty">
-        <h1>Choose a category</h1>
         <mat-list role="list">
             <mat-list-item role="listitem" *ngFor="let category of categoryList;">
                 {{category.name}}
